@@ -1,0 +1,18 @@
+
+.form-cursos{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: center;
+    height: auto;
+    width: auto;
+}
+
+.form{
+   background-color: rgb(70, 70, 70);
+   margin-top:50px;
+   border-radius: 10px;
+   padding: 60px;
+   color: white;
+
+}
