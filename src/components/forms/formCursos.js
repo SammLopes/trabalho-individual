@@ -32,13 +32,14 @@ const FormularioCursos = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      return alert("Preencha todos os campos !!!");
-    } 
+      return  alert("Preencha todos os campos !!!");
+    } else {
         const updateCursos = Array.isArray(cursos) ? [...cursos, { ...novoCurso }] : [{ ...novoCurso }];
         console.log(updateCursos);
         setCursos(updateCursos);
         setLocalStorage(updateCursos);
         setValidated(true);
+    }
   };
 
   const edit = () => {

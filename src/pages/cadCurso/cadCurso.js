@@ -3,6 +3,7 @@ import Footer from "../../components/footer";
 import FormularioCursos from '../../components/forms/formCursos.js';
 import '../../assets/css/formCurso.css';
 import '../../assets/css/tableCurso.css'
+import '../../assets/css/footer.css'
 import { useState } from "react";
 const CadastroCursos = () => {
     
@@ -13,7 +14,9 @@ const CadastroCursos = () => {
             <div className="form-cursos">
                 <FormularioCursos/>
             </div>
-            <Footer/>      
+            <div className="footer">
+                <Footer />      
+            </div>
         </>
     )
 }
