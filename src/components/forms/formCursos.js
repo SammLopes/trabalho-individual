@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 
 const FormularioCursos = () => {
+
+  const formRef = useRef(null);
 
   const [validated, setValidated] = useState(false);
   const [cursos, setCursos] = useState([]);
@@ -58,7 +60,7 @@ const FormularioCursos = () => {
 
   const edit = (event) => {
    
-    const form = event.currentTarget;
+    const form = formRef.current;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -109,7 +111,7 @@ const FormularioCursos = () => {
     <>
     <div className='form d-flex justify-content-center'>
     <Stack gap={2} className="col-md-5 mx-auto" >    
-    <Form className='div-form' noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form ref={formRef} className='div-form' noValidate validated={validated} onSubmit={handleSubmit}>
       <h1>Formulário de Cadastro de Curso</h1>
       <Row className="mb-4">
         <Form.Group as={Col} md="4" controlId="validationCustom01">

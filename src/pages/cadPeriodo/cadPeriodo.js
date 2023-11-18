@@ -5,7 +5,9 @@ const CadastroPeriodo = () => {
     return (
         <>
             <Navigation />
-            <div>Período</div>
+            <div className='menu'>
+                <div>Período</div>
+            </div>
             <Footer/>
         </>
     )   

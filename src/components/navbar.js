@@ -19,6 +19,18 @@ const Navigation = () => {
               <NavDropdown.Item as={Link} to="/periodo">
                 Cadastro de Período
               </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/professores">
+                Cadastro de professores
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/salas">
+                Cadastro de salas
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/desafio">
+                Cadastro de Desafios
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/horarios">
+                Cadastro de horarios
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

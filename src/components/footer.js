@@ -19,6 +19,7 @@ const styles = {
     bottom: '0',
     left:'0',
     width: '100%',
+    alignSelf: 'flex-end'
   },
 };
 

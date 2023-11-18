@@ -5,14 +5,15 @@ const Menu = () => {
     return (
         <>
                 <Navigation />
-            <div className="menu">
+            <div className="menu" >
                 <div>Menu</div>
             </div>
             <div className="footer">
-                <Footer/>
+                <Footer />
             </div>
         </>
     )
-}
+
+};
 
 export default Menu ;

@@ -3,16 +3,23 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import CadastroPeriodo from './pages/cadPeriodo/cadPeriodo.js';
 import CadastroCursos from './pages/cadCurso/cadCurso.js'
 import Menu from './pages/menu/menu.js'
+import CadastroProfessores from './pages/cadProfessores/cadProfessores.js';
+import CadastroSalas from './pages/cadSalas/cadSalas.js';
+import CadastroDesafios from './pages/cadDesafio/cadDesafio.js';
+import CadastroHorarios from './pages/cadHorarios/cadHorarios.js';
 
 const router = createBrowserRouter([
   {path:"/", element:<Menu />},
   {path:'/curso',element:<CadastroCursos/>},
-  {path:'/periodo', element:<CadastroPeriodo/>}
+  {path:'/periodo', element:<CadastroPeriodo/>},
+  {path:'/professores', element:<CadastroProfessores/>}, 
+  {path:'/salas', element:<CadastroSalas/>},
+  {path:'/desafio', element:<CadastroDesafios/>},
+  {path:'/horarios', element:<CadastroHorarios/>}
 ]);
 
 
