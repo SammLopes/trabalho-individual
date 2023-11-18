@@ -4,9 +4,11 @@ import Footer from "../../components/footer";
 const Menu = () => {
     return (
         <>
-            <div className="menu">
                 <Navigation />
+            <div className="menu">
                 <div>Menu</div>
+            </div>
+            <div className="footer">
                 <Footer/>
             </div>
         </>

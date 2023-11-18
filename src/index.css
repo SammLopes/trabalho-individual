@@ -10,20 +10,7 @@ body {
 
 
 }
-/*
 
-.form{
-    display: flex;
-    background-color: rgb(255, 255, 255);
-    align-content: center;
-    margin: 0;
-    padding: 0;
-    flex:1 1 auto;
-    flex-direction: column;
-    align-self: stretch;
-
-}
-*/
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;

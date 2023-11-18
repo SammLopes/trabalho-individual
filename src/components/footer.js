@@ -1,8 +1,8 @@
 import React from 'react';
-
+import '../assets/css/footer.css'
 const Footer = () => {
   return (
-    <footer style={styles.footer}>
+    <footer  style={styles.footer}>
       <p>Criado por min mesmo !!!</p>
     </footer>
   );
@@ -14,8 +14,10 @@ const styles = {
     color: '#fff',
     padding: '5px',
     textAlign: 'center',
-    position: 'fixed',
+    position: 'relative',
+    display:'block',
     bottom: '0',
+    left:'0',
     width: '100%',
   },
 };

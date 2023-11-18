@@ -4,21 +4,18 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
-import BotaoDel from '../button/buttonDel';
-import BotaoEdit from '../button/buttonEdit';
-import Table from 'react-bootstrap/Table'
 
 const FormularioCursos = () => {
-  
+
   const [validated, setValidated] = useState(false);
   const [cursos, setCursos] = useState([]);
   const [novoCurso, setNovoCurso] = useState({
-    id: "",
     nome:"",
     coordenador:"", 
     data:"",
   });
-
+  const [cursoEditado, setCursoEditado] = useState(null);
+  const [editando, setEdit] = useState(false);
   useEffect(() => {
     const getLocalStorage = JSON.parse(localStorage.getItem('cursos')) || [];
     setCursos(getLocalStorage);
@@ -26,7 +23,6 @@ const FormularioCursos = () => {
 
   const setLocalStorage = (chave) => localStorage.setItem('cursos', JSON.stringify(chave));
 
-  
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -42,11 +38,70 @@ const FormularioCursos = () => {
     }
   };
 
-  const edit = () => {
-      console.log("Edit");
+
+  const camposPreenchidos = (index) => {
+      const cursoEditar = cursos[index];
+      if (cursoEditar) {
+         setCursoEditado(cursoEditar);
+         setNovoCurso({
+            nome: cursoEditar.nome, 
+            coordenador: cursoEditar.coordenador, 
+            data: cursoEditar.data
+         });
+         setEdit(true);
+      } else {
+        
+         console.error("Curso não encontrado para o índice:", index);
+      }
+       
   }
 
-  const deletar = () => {
+  const edit = (event) => {
+   
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      return  alert("Preencha todos os campos !!!");
+    } else {
+      const cursosAtualizado = [...cursos];
+      cursosAtualizado[cursos.indexOf(cursoEditado)] = novoCurso;
+      setCursos(cursosAtualizado);
+      setCursoEditado(null);
+      setNovoCurso({
+        nome: "",
+        coordenador: " ",
+        data: "", 
+      });
+      setEdit(false);
+      localStorage.setItem("cursos", JSON.stringify(cursosAtualizado));
+      console.log("Edit");
+    }
+  }
+
+  const exitEdicao = () => {
+    console.log("passei exitEdição");
+    setCursoEditado(null);
+    setNovoCurso({
+      nome: "", 
+      coordenador: "",
+      data: ""
+    });
+    setEdit(false);
+  }
+
+  const deletar = (index) => {
+    console.log("passei deletar");
+    const novosCursos = cursos.filter((cursos, i) => i !== index);
+    setCursos(novosCursos);
+    setCursoEditado(null);
+    setNovoCurso({
+      nome: "", 
+      coordenador: "",
+      data: ""
+    });
+    setEdit(false);
+    localStorage.setItem("cursos", JSON.stringify(novosCursos));
     console.log("Deletar");
   }
 
@@ -98,7 +153,32 @@ const FormularioCursos = () => {
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
-      <Button type="submit">Submit form</Button>
+      {editando ? (
+        <>
+        <div className='combo-botoes'>
+          <Row className='mb-3' >
+            <Button
+              type="button"
+              onClick={edit}
+              variant = "primary"
+              as={Col} md="3"
+            >Confirmar Edição</Button>
+          </Row>
+          <Row >
+            <Button
+              type = "button"
+              onClick={exitEdicao}
+              variant = "danger"
+              className='text-right'
+              as={Col} md="3"
+            >Cancelar Edição</Button>
+          </Row>
+        </div>
+        </>
+      ): (
+
+      <Button type="submit">Adicionar</Button>
+      )}
     </Form>
     </Stack>
     </div>
@@ -109,7 +189,6 @@ const FormularioCursos = () => {
           <table className='tabelaCurso' >
             <thead>
               <tr>
-                <th >Id</th>
                 <th >Nome</th>
                 <th >Coordenador</th>
                 <th >Data</th>
@@ -119,13 +198,12 @@ const FormularioCursos = () => {
             <tbody >
               {cursos.map((curso, index) => (
                 <tr key={index}>
-                  <td >{curso.id}</td>
                   <td >{curso.nome}</td>
                   <td >{curso.coordenador}</td>
                   <td >{curso.data}</td>
                   <td>
-                    <BotaoEdit onClick={edit()}/>
-                    <BotaoDel onClick={deletar()}/>    
+                    <Button  onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
+                    <Button type="button" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
                   </td>
                 </tr>
               ))}
