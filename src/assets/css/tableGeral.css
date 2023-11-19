@@ -1,9 +1,9 @@
 .tabelaContainer {
-    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal se necessário */
-    max-width: 100%; /* Garante que a tabela não ultrapasse a largura do contêiner */
+    overflow-x: auto; 
+    max-width: 100%; 
   }
 
-.tabelaCurso{
+.tabelaGeral{
     border-radius: 5px;
     background-color: rgb(70, 70, 70);
     color: white;
@@ -13,25 +13,25 @@
     max-width: 100%;
 }
 
-.tabelaCurso th, .tabelaCurso td{
+.tabelaGeral th, .tabelaGeral td{
     border: 2px solid rgb(75, 75, 75);
     padding: 20px;
     text-align: center;
 }
 
-.tabelaCurso td > button{
+.tabelaGeral td > button{
     margin-left: 10px;
 }
 
-.tabelaCurso thead{
+.tabelaGeral thead{
     background-color: rgb(48, 48, 48);
 }
 
-.tabelaCurso tbody tr:nth-child(even){
+.tabelaGeral tbody tr:nth-child(even){
     background-color: #2e2e2e;
 }
 
-.tabelaCurso th{
+.tabelaGeral th{
     background-color: #2e2e2e;
     color: white;
 }

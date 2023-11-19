@@ -1,8 +1,8 @@
 import Navigation from "../../components/navbar";
 import Footer from "../../components/footer";
 import FormularioCursos from '../../components/forms/formCursos.js';
-import '../../assets/css/formCurso.css';
-import '../../assets/css/tableCurso.css'
+import '../../assets/css/formGeral.css';
+import '../../assets/css/tableGeral.css'
 import '../../assets/css/footer.css'
 
 const CadastroCursos = () => {
@@ -11,7 +11,7 @@ const CadastroCursos = () => {
     return (
         <>
             <Navigation />
-            <div className="form-cursos">
+            <div className="form-comun">
                 <FormularioCursos/>
             </div>
             <div className="footer">

@@ -185,10 +185,10 @@ const FormularioCursos = () => {
     </Stack>
     </div>
 
-    <div className='div-tabelaCurso'>
+    <div >
       
       { cursos.length > 0 ? (  
-          <table className='tabelaCurso' >
+          <table className='tabelaGeral' >
             <thead>
               <tr>
                 <th >Nome</th>
