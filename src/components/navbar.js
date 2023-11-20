@@ -29,7 +29,7 @@ const Navigation = () => {
                 Cadastro de Desafios
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/horarios">
-                Cadastro de Horarios
+                Calendário de Horarios
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

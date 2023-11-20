@@ -1,94 +1,244 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 
 const FormularioSalas = () => {
-    //Validação 
-    const [validated, setValidated] = useState(false);
 
-    const handleSubmit = (event) => {
+  const formRef = useRef(null);
+
+  const [validated, setValidated] = useState(false);
+  const [salas, setSalas] = useState([]);
+  const [novaSala, setNovaSala] = useState({
+    andar: "",
+    numero:"", 
+    predio:"", 
+    numeroCadeiras:""
+  });
+  const [salaEditado, setSalaEditado] = useState(null);
+  const [editando, setEdit] = useState(false);
+  useEffect(() => {
+    const getLocalStorage = JSON.parse(localStorage.getItem('salas')) || [];
+    setSalas(getLocalStorage);
+  }, []);
+
+  const setLocalStorage = (chave) => localStorage.setItem('salas', JSON.stringify(chave));
+
+  const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      return  alert("Preencha todos os campos !!!");
+    } else {
+        const updateSalas = Array.isArray(salas) ? [...salas, { ...novaSala }] : [{ ...novaSala }];
+        console.log(updateSalas);
+        setSalas(updateSalas);
+        setLocalStorage(updateSalas);
+        setValidated(true);
     }
-
-    setValidated(true);
   };
 
-    return(
-        <div className='form d-flex justify-content-center'>
+
+  const camposPreenchidos = (index) => {
+      const salaEditar = salas[index];
+      if (salaEditar) {
+         setSalaEditado(salaEditar);
+         setNovaSala({
+            andar: salaEditar.andar, 
+            numero: salaEditar.numero, 
+            predio: salaEditar.predio,
+            numeroCadeiras: salaEditar.numeroCadeiras
+         });
+         setEdit(true);
+      } else {
+        
+         console.error("Sala não encontrado para o índice:", index);
+      }
+       
+  }
+
+  const edit = (event) => {
+   
+    const form = formRef.current;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      return  alert("Preencha todos os campos !!!");
+    } else {
+      const salasAtualizado = [...salas];
+      salasAtualizado[salas.indexOf(salaEditado)] = novaSala;
+      setSalas(salasAtualizado);
+      setSalaEditado(null);
+      setNovaSala({
+        andar: "",
+        numero:"", 
+        predio:"", 
+        numeroCadeiras:""
+      });
+      setEdit(false);
+      //localStorage.setItem("salas", JSON.stringify(salasAtualizado));
+      setLocalStorage(salasAtualizado);
+      console.log("Edit");
+    }
+  }
+
+  const exitEdicao = () => {
+    console.log("passei exitEdição");
+    setSalaEditado(null);
+    setNovaSala({
+      andar: "",
+      numero:"", 
+      predio:"", 
+      numeroCadeiras:""
+    });
+    setEdit(false);
+  }
+
+  const deletar = (index) => {
+    console.log("passei deletar");
+    const novasSalas = salas.filter((salas, i) => i !== index);
+    setSalas(novasSalas);
+    setSalaEditado(null);
+    setNovaSala({
+      andar: "",
+      numero:"", 
+      predio:"", 
+      numeroCadeiras:""
+    });
+    setEdit(false);
+    //localStorage.setItem("cursos", JSON.stringify(novosCursos));
+    setLocalStorage(novasSalas);
+    console.log("Deletar");
+  }
+
+  return (
+    <>
+    <div className='form d-flex justify-content-center'>
     <Stack gap={2} className="col-md-5 mx-auto" >    
-    <Form className='div-form' noValidate validated={validated} onSubmit={handleSubmit}>
-      <Row className="mb-3">
+    <Form ref={formRef} className='div-form' noValidate validated={validated} onSubmit={handleSubmit}>
+      <h1>Formulário de Cadastro de Salas</h1>
+      <Row className="mb-4">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>First name</Form.Label>
+          <Form.Label>Andar</Form.Label>
           <Form.Control
             required
             type="text"
-            placeholder="First name"
-            defaultValue="Mark"
+            placeholder="Andar"
+            value={novaSala.andar}
+            onChange={(e) => setNovaSala({...novaSala, andar:e.target.value})
+            }
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Digite o Andar.
+          </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Last name"
-            defaultValue="Otto"
+        <Form.Group as={Col} md="6" controlId="validationCustom03">
+          <Form.Label>Predio</Form.Label>
+          <Form.Control type="text" placeholder="Predio" 
+          required  
+           value={novaSala.predio}
+           onChange={(e) => setNovaSala({...novaSala, predio: e.target.value})}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-          <Form.Label>Username</Form.Label>
-          <InputGroup hasValidation>
-            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Username"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please choose a username.
-            </Form.Control.Feedback>
-          </InputGroup>
+          <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Digite o Predio.
+          </Form.Control.Feedback>
         </Form.Group>
       </Row>
       <Row className="mb-3">
         <Form.Group as={Col} md="6" controlId="validationCustom03">
-          <Form.Label>City</Form.Label>
-          <Form.Control type="text" placeholder="City" required />
+          <Form.Label>Numero da Sala</Form.Label>
+          <Form.Control type="text" placeholder="Numero da Sala" 
+          required  
+           value={novaSala.numero}
+           onChange={(e) => setNovaSala({...novaSala, numero: e.target.value})}
+          />
+          <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
-            Please provide a valid city.
+            Digite o numero da sala.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="validationCustom04">
-          <Form.Label>State</Form.Label>
-          <Form.Control type="text" placeholder="State" required />
+        <Form.Group as={Col} md="5" controlId="validationCustom05">
+          <Form.Label>Numero de Cadeiras</Form.Label>
+          <Form.Control type="text"  placeholder='Numero de Cadeiras'
+          required
+          value={novaSala.numeroCadeiras}
+          onChange={(e) => setNovaSala({...novaSala, numeroCadeiras:e.target.value})}
+          />
           <Form.Control.Feedback type="invalid">
-            Please provide a valid state.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="validationCustom05">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control type="text" placeholder="Zip" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid zip.
+            Escolha o numero de Cadeiras
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
-      <Button type="submit">Submit form</Button>
+      {editando ? (
+        <>
+        <div className='combo-botoes'>
+          <Row className='mb-3' >
+            <Button
+              type="button"
+              onClick={edit}
+              variant = "primary"
+              as={Col} md="3"
+            >Confirmar Edição</Button>
+          </Row>
+          <Row >
+            <Button
+              type = "button"
+              onClick={exitEdicao}
+              variant = "danger"
+              className='text-right'
+              as={Col} md="3"
+            >Cancelar Edição</Button>
+          </Row>
+        </div>
+        </>
+      ): (
+
+      <Button type="submit">Adicionar</Button>
+      )}
     </Form>
     </Stack>
     </div>
-    )
+
+    <div >
+      
+      { salas.length > 0 ? (  
+          <table className='tabelaGeral' >
+            <thead>
+              <tr>
+                <th >Andar</th>
+                <th >Numero</th>
+                <th >Predio</th>
+                <th >Numero de Cadeiras</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody >
+              {salas.map((salas, index) => (
+                <tr key={index}>
+                  <td >{salas.andar}</td>
+                  <td >{salas.numero}</td>
+                  <td >{salas.predio}</td>
+                  <td >{salas.numeroCadeiras}</td>
+                  <td>
+                    <Button  onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
+                    <Button type="button" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )  : (
+          <p className='info'>Nenhum dado disponível!!</p>
+       )}   
+    
+    </div>
+    </>
+  );
 }
 
 export default FormularioSalas;

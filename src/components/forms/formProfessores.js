@@ -144,7 +144,7 @@ const FormularioProfessores = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="5" controlId="validationCustom03">
-          <Form.Label>Matricula</Form.Label>
+          <Form.Label>Telefone</Form.Label>
           <Form.Control type="text" placeholder="Telefone" 
           required  
            value={novoProfessor.telefone}

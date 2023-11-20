@@ -1,11 +1,12 @@
 import Navigation from "../../components/navbar";
 import Footer from "../../components/footer";
+import FormularioSalas from "../../components/forms/formSalas.js";
 const CadastroSalas = () => {
     return(
         <>
             <Navigation/>
-            <div className="menu">
-                <div>Cadastro de Salas</div>
+            <div className="form-comun">
+                <FormularioSalas/>
             </div>
             <Footer/>
         </>

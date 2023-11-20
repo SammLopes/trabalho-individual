@@ -255,7 +255,7 @@ const FormularioPeriodo = () => {
           <table className='tabelaGeral' >
             <thead>
               <tr>
-                <th >Nuemro de Periodos</th>
+                <th >Nemero de Periodos</th>
                 <th >Semestre/Ano</th>
                 <th >Data de Inicio</th>
                 <th >Data de Fim</th>

@@ -1,11 +1,12 @@
 import Navigation from "../../components/navbar";
 import Footer from "../../components/footer";
+import FormularioDesafios from "../../components/forms/formDesafio";
 const CadastroDesafios = () => {
     return(
         <>
             <Navigation/>
-            <div className="menu">
-                <div>Cadastro de Desadios</div>
+            <div className="form-comun">
+                <FormularioDesafios/>
             </div>
             <Footer/>
         </>
