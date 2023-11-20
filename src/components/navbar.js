@@ -20,16 +20,16 @@ const Navigation = () => {
                 Cadastro de Período
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/professores">
-                Cadastro de professores
+                Cadastro de Professores
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/salas">
-                Cadastro de salas
+                Cadastro de Salas
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/desafio">
                 Cadastro de Desafios
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/horarios">
-                Cadastro de horarios
+                Cadastro de Horarios
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
