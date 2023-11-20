@@ -131,7 +131,7 @@ const FormularioPeriodo = () => {
         <div className='form d-flex justify-content-center'>
     <Stack gap={2} className="col-md-5 mx-auto" >    
     <Form ref={formRef} className='div-form' noValidate validated={validated} onSubmit={handleSubmit}>
-      <h1>Formulário de Cadastro de Professores</h1>
+      <h1>Formulário de Cadastro de Periodo</h1>
       <Row className="mb-4">
       <Form.Group as={Col} md="5" controlId="validationCustom03">
           <Form.Label>Periodo</Form.Label>
@@ -209,7 +209,7 @@ const FormularioPeriodo = () => {
             >
             <option value="">Cursos</option>
             {cursos.map((cursos) => (
-              <option key={cursos.id} value={cursos.id}>
+              <option key={cursos.id} value={cursos.nome}>
                 {cursos.nome}
               </option>
             ))}
