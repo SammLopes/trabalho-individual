@@ -8,7 +8,7 @@ import Stack from 'react-bootstrap/Stack';
 
 const   FormularioDesafio = () => {
   const formRef = useRef(null);
-
+  const diasDaSemana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'];
   const [validated, setValidated] = useState(false);
   const [desafios, setDesafios] = useState([]);
   const [salas, setSalas] = useState([]);
@@ -21,7 +21,8 @@ const   FormularioDesafio = () => {
     dataInicio:"",
     dataFim:"",
     semana: "",
-    horario:"",
+    horarioStart:"",
+    horarioEnd:"",
     sala: ""
   });
   const [desafioEditado, setDesafioEditado] = useState(null);
@@ -30,6 +31,8 @@ const   FormularioDesafio = () => {
     const storageSalas = JSON.parse(localStorage.getItem('salas')) || [];
     const storageProfessores =JSON.parse(localStorage.getItem('professores')) || [];
     const getLocalStorage = JSON.parse(localStorage.getItem('periodos')) || [];
+    const storageDesafios = JSON.parse(localStorage.getItem('desafios')) || [];
+    setDesafios(storageDesafios);
     setSalas(storageSalas);
     setProfessores(storageProfessores);
     setPeriodos(getLocalStorage);
@@ -64,7 +67,8 @@ const   FormularioDesafio = () => {
           dataInicio:desafioEditar.dataInicio,
           dataFim:desafioEditar.dataFim,
           semana:desafioEditar.semana,
-          horario:desafioEditar.horario,
+          horarioStart:desafioEditar.horarioStart,
+          horarioEnd:desafioEditar.horarioEnd,
           sala: desafioEditar.sala
          });
          setEdit(true);
@@ -94,7 +98,8 @@ const   FormularioDesafio = () => {
         dataInicio:"",
         dataFim:"",
         semana: "",
-        horario:"",
+        horarioStart:"",
+        horarioEnd:"",
         sala: ""
       });
       setEdit(false);
@@ -114,7 +119,8 @@ const   FormularioDesafio = () => {
       dataInicio:"",
       dataFim:"",
       semana: "",
-      horario:"",
+      horarioStart:"",
+      horarioEnd:"",
       sala: ""
     });
     setEdit(false);
@@ -132,7 +138,8 @@ const   FormularioDesafio = () => {
       dataInicio:"",
       dataFim:"",
       semana: "",
-      horario:"",
+      horarioStart:"",
+      horarioEnd:"",
       sala: ""
     });
     setEdit(false);
@@ -167,8 +174,8 @@ const   FormularioDesafio = () => {
            onChange={(e) => setNovoDesafio({...novoDesafio, periodo:e.target.value})}
           >
           <option value="">Período</option>
-          {periodos.map((periodos) => (
-              <option key={periodos.id} value={periodos.numeroPeriodo}>
+          {periodos.map((periodos, index) => (
+              <option key={index} value={periodos.numeroPeriodo}>
                 {periodos.numeroPeriodo}
               </option>
             ))}
@@ -177,7 +184,9 @@ const   FormularioDesafio = () => {
           <Form.Control.Feedback type="invalid">
             Escolha o Periodo.
           </Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group>        
+      </Row>
+      <Row className="mb-3">
         <Form.Group as={Col} md="5" controlId="validationCustom03">
           <Form.Label>Professores</Form.Label>
           <Form.Select
@@ -185,9 +194,27 @@ const   FormularioDesafio = () => {
             onChange={(e) => {setNovoDesafio({...novoDesafio, professor:e.target.value})}}
             >
             <option value="">Professores</option>
-            {professores.map((professores) => (
-              <option key={professores.id} value={professores.nome}>
+            {professores.map((professores, index) => (
+              <option key={index} value={professores.nome}>
                 {professores.nome}
+              </option>
+            ))}
+        </Form.Select>
+          <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Escolha o Periodo.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="5" controlId="validationCustom03">
+          <Form.Label>Sala</Form.Label>
+          <Form.Select
+            value={novoDesafio.sala}
+            onChange={(e) => {setNovoDesafio({...novoDesafio, sala:e.target.value})}}
+            >
+            <option value="">Salas</option>
+            {salas.map((salas, index) => (
+              <option key={index} value={salas.numero}>
+                {salas.numero}
               </option>
             ))}
         </Form.Select>
@@ -231,9 +258,11 @@ const   FormularioDesafio = () => {
             onChange={(e) => {setNovoDesafio({...novoDesafio, semana:e.target.value})}}
             >
             <option value="">Semana</option>
-            <option value="Segunda">Matutino</option>
-            <option value="Terça">Vespertino</option>
-            <option value="Quarta">Noturno</option>
+           {diasDaSemana.map((dia, index) => (
+              <option key={index} value={dia}>
+                {dia}
+              </option>
+           ))}
         </Form.Select>
         <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
@@ -241,17 +270,27 @@ const   FormularioDesafio = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="5" controlId="validationCustom03">
-          <Form.Label>Horarios</Form.Label>
-            <Form.Select
+          <Form.Label>Horario Começo</Form.Label>
+            <Form.Control
             type="time"
-            value={novoDesafio.horario}
-            onChange={(e) => {setNovoDesafio({...novoDesafio, horario:e.target.value})}}
-            >
-        </Form.Select>
+            value={novoDesafio.horarioStart}
+            onChange={(e) => {setNovoDesafio({...novoDesafio, horarioStart:e.target.value})}}
+            />
+            
         <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
-            Selecione Hora.
+            Selecione as Horas.
           </Form.Control.Feedback>
+        </Form.Group>
+      </Row>
+      <Row className='mb-3'>
+        <Form.Group as={Col} md="5" controlId="validationCustom03">
+        <Form.Label>Horario Começo</Form.Label>
+        <Form.Control
+              type="time"
+              value={novoDesafio.horarioEnd}
+              onChange={(e) => {setNovoDesafio({...novoDesafio, horarioEnd:e.target.value})}}
+              />
         </Form.Group>
       </Row>
       {editando ? (
@@ -284,8 +323,8 @@ const   FormularioDesafio = () => {
     </div>
         
     <div >
-      
-      { desafios.length > 0 ? (  
+      {console.log(desafios)}
+      {desafios.length > 0 ? (  
           <table className='tabelaGeral' >
             <thead>
               <tr>
@@ -295,7 +334,8 @@ const   FormularioDesafio = () => {
                 <th >Data de Inicio</th>
                 <th >Data de Fim</th>
                 <th >Dia Semana</th>
-                <th >Horario</th>
+                <th >Horario Inicio</th>
+                <th >Horario Fim</th>
                 <th >Sala</th>
                 <th >Ação</th>
               </tr>
@@ -309,7 +349,8 @@ const   FormularioDesafio = () => {
                   <td >{desafios.dataInicio}</td>
                   <td >{desafios.dataFim}</td>
                   <td >{desafios.semana}</td>
-                  <td >{desafios.horario}</td>
+                  <td >{desafios.horarioStart}</td>
+                  <td >{desafios.horarioEnd}</td>
                   <td >{desafios.sala}</td>
                   <td>
                     <Button  onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>

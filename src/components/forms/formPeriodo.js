@@ -208,8 +208,8 @@ const FormularioPeriodo = () => {
             onChange={(e) => {setNovoPeriodo({...novoPeriodo, cursoPeriodo:e.target.value})}}
             >
             <option value="">Cursos</option>
-            {cursos.map((cursos) => (
-              <option key={cursos.id} value={cursos.nome}>
+            {cursos.map((cursos, index) => (
+              <option key={index} value={cursos.nome}>
                 {cursos.nome}
               </option>
             ))}
