@@ -38,6 +38,12 @@ const FormularioPeriodo = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      for(let periodo of periodos){
+        if(periodo.numeroPeriodo === novoPeriodo.numeroPeriodo && periodo.semestre === novoPeriodo.semestre){
+          alert("já existe esse periodo cadastrado");
+          return;
+        }
+      }
         const updatePeriodos = Array.isArray(periodos) ? [...periodos, { ...novoPeriodo }] : [{ ...novoPeriodo }];
         console.log(updatePeriodos);
         setPeriodos(updatePeriodos);

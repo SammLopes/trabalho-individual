@@ -66,6 +66,12 @@ const FormularioCursos = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      for(let curso of cursos){
+        if(curso.nome === novoCurso.nome){
+          alert("Ja existe este curso cadastrado");
+          return;
+        }
+      }
       const cursosAtualizado = [...cursos];
       cursosAtualizado[cursos.indexOf(cursoEditado)] = novoCurso;
       setCursos(cursosAtualizado);

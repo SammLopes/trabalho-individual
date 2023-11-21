@@ -38,6 +38,7 @@ const   FormularioDesafio = () => {
     setPeriodos(getLocalStorage);
   }, []);
 
+
   const setLocalStorage = (chave) => localStorage.setItem('desafios', JSON.stringify(chave));
 
   const handleSubmit = (event) => {
@@ -47,6 +48,19 @@ const   FormularioDesafio = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+        for(let desafio of novoDesafio.desafio){
+          console.log("passei");
+          if(desafio.desafio === novoDesafio.desafio){
+            alert("Este desafio ja foi cadastrado");
+            return;
+          }
+        }
+        for(let desafio of desafios){
+          if(desafio.desafio === novoDesafio.desafio && desafio.professor !== novoDesafio.professor){
+            alert("ja existe um desafio associado a este professor");
+            return;
+          }
+        }
         const updateDesafios = Array.isArray(desafios) ? [...desafios, { ...novoDesafio }] : [{ ...novoDesafio }];
         console.log(updateDesafios);
         setPeriodos(updateDesafios);
@@ -270,7 +284,7 @@ const   FormularioDesafio = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="5" controlId="validationCustom03">
-          <Form.Label>Horario Começo</Form.Label>
+          <Form.Label>Horario Fim</Form.Label>
             <Form.Control
             type="time"
             value={novoDesafio.horarioStart}
@@ -323,8 +337,7 @@ const   FormularioDesafio = () => {
     </div>
         
     <div >
-      {console.log(desafios)}
-      {desafios.length > 0 ? (  
+          {desafios.length > 0 ? (  
           <table className='tabelaGeral' >
             <thead>
               <tr>

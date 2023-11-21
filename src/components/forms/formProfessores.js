@@ -32,6 +32,12 @@ const FormularioProfessores = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+        for(let professor of professores){
+          if(professor.nome === novoProfessor.nome){
+            alert("Já existe este professor cadastrado");
+            return;
+          }
+        }
         const updateProfessores = Array.isArray(professores) ? [...professores, { ...novoProfessor }] : [{ ...novoProfessor }];
         console.log(updateProfessores);
         setProfessores(updateProfessores);
@@ -66,6 +72,12 @@ const FormularioProfessores = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      for(let professor of professores){
+        if(professor.nome === novoProfessor.nome){
+          alert("Já existe este professor cadastrado");
+          return;
+        }
+      }
       const professoresAtualizado = [...professores];
       professoresAtualizado[professores.indexOf(professorEditado)] = novoProfessor;
       setProfessores(professoresAtualizado);

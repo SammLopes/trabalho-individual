@@ -1,6 +1,6 @@
 import Navigation from "../../components/navbar";
 import Footer from "../../components/footer";
-const CadastroHorarios = () => {
+const pageCalendario = () => {
     return(
         <>
             <Navigation/>
@@ -12,4 +12,4 @@ const CadastroHorarios = () => {
     )
 }
 
-export default CadastroHorarios;
+export default pageCalendario;

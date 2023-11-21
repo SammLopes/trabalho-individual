@@ -33,6 +33,12 @@ const FormularioSalas = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+        for(let sala of salas ){
+          if(sala.andar === novaSala.andar && sala.numero === novaSala.numero){
+            alert("Esta sala ja está reservada!");
+            return;
+          }
+        }
         const updateSalas = Array.isArray(salas) ? [...salas, { ...novaSala }] : [{ ...novaSala }];
         console.log(updateSalas);
         setSalas(updateSalas);

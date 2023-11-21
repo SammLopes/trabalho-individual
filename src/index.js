@@ -10,7 +10,7 @@ import Menu from './pages/menu/menu.js'
 import CadastroProfessores from './pages/cadProfessores/cadProfessores.js';
 import CadastroSalas from './pages/cadSalas/cadSalas.js';
 import CadastroDesafios from './pages/cadDesafio/cadDesafio.js';
-import CadastroHorarios from './pages/cadHorarios/cadHorarios.js';
+import pageCalendario from './pages/cadHorarios/calendario.js';
 
 const router = createBrowserRouter([
   {path:"/", element:<Menu />},
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   {path:'/professores', element:<CadastroProfessores/>}, 
   {path:'/salas', element:<CadastroSalas/>},
   {path:'/desafio', element:<CadastroDesafios/>},
-  {path:'/horarios', element:<CadastroHorarios/>}
+  {path:'/calendario', element:<pageCalendario/>}
 ]);
 
 

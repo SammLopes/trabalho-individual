@@ -28,7 +28,7 @@ const Navigation = () => {
               <NavDropdown.Item as={Link} to="/desafio">
                 Cadastro de Desafios
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/horarios">
+              <NavDropdown.Item as={Link} to="/calendario">
                 Calendário de Horarios
               </NavDropdown.Item>
             </NavDropdown>
