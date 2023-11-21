@@ -48,13 +48,13 @@ const   FormularioDesafio = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
-        for(let desafio of novoDesafio.desafio){
-          console.log("passei");
-          if(desafio.desafio === novoDesafio.desafio){
-            alert("Este desafio ja foi cadastrado");
-            return;
-          }
-        }
+        // for(let desafio of desafios){
+        //   //console.log("passei");
+        //   if(desafio.desafio === novoDesafio.desafio){
+        //     alert("Este desafio ja foi cadastrado");
+        //     return;
+        //   }
+        // }
         for(let desafio of desafios){
           if(desafio.desafio === novoDesafio.desafio && desafio.professor !== novoDesafio.professor){
             alert("ja existe um desafio associado a este professor");
