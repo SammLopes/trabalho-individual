@@ -101,6 +101,7 @@ const   FormularioDesafio = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      
       const desafiosAtualizado = [...desafios];
       desafiosAtualizado[desafios.indexOf(desafioEditado)] = novoDesafio;
       setDesafios(desafiosAtualizado);

@@ -32,6 +32,12 @@ const FormularioCursos = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      for(let curso of cursos){
+        if(curso.nome === novoCurso.nome){
+          alert("Curso já resgistrado!!!");
+          return;
+        }
+      }
         const updateCursos = Array.isArray(cursos) ? [...cursos, { ...novoCurso }] : [{ ...novoCurso }];
         console.log(updateCursos);
         setCursos(updateCursos);

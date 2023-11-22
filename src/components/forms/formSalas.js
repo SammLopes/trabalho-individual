@@ -35,7 +35,7 @@ const FormularioSalas = () => {
     } else {
         for(let sala of salas ){
           if(sala.andar === novaSala.andar && sala.numero === novaSala.numero){
-            alert("Esta sala ja está reservada!");
+            alert("Esta sala ja está cadastrada!");
             return;
           }
         }
@@ -74,6 +74,12 @@ const FormularioSalas = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      for(let sala of salas){
+        if(sala.andar === novaSala.andar && sala.numero === novaSala.numero){
+          alert("Esta sala ja está cadastrada");
+          return;
+        }
+      }
       const salasAtualizado = [...salas];
       salasAtualizado[salas.indexOf(salaEditado)] = novaSala;
       setSalas(salasAtualizado);

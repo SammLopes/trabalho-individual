@@ -33,7 +33,7 @@ const FormularioProfessores = () => {
       return  alert("Preencha todos os campos !!!");
     } else {
         for(let professor of professores){
-          if(professor.nome === novoProfessor.nome){
+          if(professor.matricula === novoProfessor.matricula){
             alert("Já existe este professor cadastrado");
             return;
           }
@@ -53,8 +53,8 @@ const FormularioProfessores = () => {
          setProfessorEditado(professoresEditar);
          setNovoProfessor({
             nome: professoresEditar.nome, 
-            coordenador: professoresEditar.matricula, 
-            data: professoresEditar.telefone
+            matricula: professoresEditar.matricula, 
+            telefone: professoresEditar.telefone
          });
          setEdit(true);
       } else {
@@ -73,7 +73,7 @@ const FormularioProfessores = () => {
       return  alert("Preencha todos os campos !!!");
     } else {
       for(let professor of professores){
-        if(professor.nome === novoProfessor.nome){
+        if(professor.matricula === novoProfessor.matricula){
           alert("Já existe este professor cadastrado");
           return;
         }

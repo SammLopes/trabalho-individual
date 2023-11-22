@@ -1,0 +1,29 @@
+/* App.css */
+
+.semana {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .dia {
+    flex: 1;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  
+  .chead {
+    background-color: #f0f0f0;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .ccontent {
+    padding: 10px;
+  }
+  
+  .aula {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+  }
+  

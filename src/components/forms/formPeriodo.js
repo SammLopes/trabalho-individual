@@ -81,6 +81,12 @@ const FormularioPeriodo = () => {
       event.stopPropagation();
       return  alert("Preencha todos os campos !!!");
     } else {
+      for(let periodo of periodos){
+        if(periodo.numeroPeriodo === novoPeriodo.numeroPeriodo && periodo.semestre === novoPeriodo.semestre){
+          alert("Preiodo ja existe!!");
+          return;
+        }
+      }
       const periodosAtualizado = [...periodos];
       periodosAtualizado[periodos.indexOf(periodoEditado)] = novoPeriodo;
       setPeriodos(periodosAtualizado);
