@@ -1,29 +1,26 @@
-/* App.css */
+/* Adicione esses estilos ao seu arquivo CSS ou diretamente no seu componente React */
 
-.semana {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .dia {
-    flex: 1;
-    border: 1px solid #ccc;
-    margin: 5px;
-  }
-  
-  .chead {
-    background-color: #f0f0f0;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  .ccontent {
-    padding: 10px;
-  }
-  
-  .aula {
-    margin-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
-  }
-  
+.custom-calendar {
+  width: 100%; /* Ajusta a largura da tabela para ocupar 100% do contêiner pai */
+}
+
+.custom-calendar th, .custom-calendar td {
+  text-align: center; /* Centraliza o texto nas células */
+  padding: 10px; /* Adiciona espaço interno nas células */
+}
+
+.custom-calendar td {
+  cursor: pointer; /* Adiciona um cursor de apontador nas células clicáveis */
+}
+
+.custom-calendar td:hover {
+  background-color: #333; /* Altera a cor de fundo ao passar o mouse sobre as células */
+}
+
+.custom-calendar div {
+  margin-bottom: 5px; /* Adiciona espaço entre os eventos dentro de uma célula */
+}
+
+.custom-calendar div:not(:first-child) {
+  color: #888; /* Adiciona uma cor mais suave para eventos subsequentes */
+}

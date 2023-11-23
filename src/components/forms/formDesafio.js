@@ -8,7 +8,7 @@ import Stack from 'react-bootstrap/Stack';
 
 const   FormularioDesafio = () => {
   const formRef = useRef(null);
-  const diasDaSemana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'];
+  const diasDaSemana = ['Domingo','Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
   const [validated, setValidated] = useState(false);
   const [desafios, setDesafios] = useState([]);
   const [salas, setSalas] = useState([]);
@@ -285,7 +285,7 @@ const   FormularioDesafio = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="5" controlId="validationCustom03">
-          <Form.Label>Horario Fim</Form.Label>
+          <Form.Label>Horario Começo</Form.Label>
             <Form.Control
             type="time"
             value={novoDesafio.horarioStart}
@@ -300,7 +300,7 @@ const   FormularioDesafio = () => {
       </Row>
       <Row className='mb-3'>
         <Form.Group as={Col} md="5" controlId="validationCustom03">
-        <Form.Label>Horario Começo</Form.Label>
+        <Form.Label>Horario Fim</Form.Label>
         <Form.Control
               type="time"
               value={novoDesafio.horarioEnd}
