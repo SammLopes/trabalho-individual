@@ -61,50 +61,7 @@ const Calendario = () => {
         return dia;
     }
 
-    console.log(getDiasMes(dataAtual));
-    getDiasMes(dataAtual).forEach((semana) => {
-      semana.forEach((dataString) => {
-        const dataHoje = new Date(dataString);
-        const diaSemana = diasDaSemana[dataHoje.getDay()];
-        
-  
-        if (!events[diaSemana]) {
-          events[diaSemana] = [];
-        }
-        
-  
-        // este trecho está percorrendo por  cada matéria e adicionando a o array events 
-        desafios.forEach((desafio) => {
-          
-          const dataInicio = new Date(desafio.dataInicio);
-          const dataFim = new Date(desafio.dataFim);
-          const diaSemanaDesafio = desafio.semana;
-        
-          //const diaSemanaDesafio = diasDaSemana[dataInicio.getDay()];
-          // Verifica se a data está dentro do intervalo da matéria e se é um dia útil
-          if (
-            dataHoje >= dataInicio &&
-            dataHoje <= dataFim &&
-            diaSemana !== "Domingo" &&
-            dataString !== "" // Adiciona esta verificação
-          ) {
-            if (diaSemana === diaSemanaDesafio) {
-              // Adiciona a matéria apenas se o dia da semana coincidir
-              if (!events[diaSemana].some((event) => event.id === desafio.id)) {
-                console.log(events[diaSemana]);
-                events[diaSemana].push(desafio);
-                
-              }
-            }
-          }
-
-
-
-          
-        });
-      });
-    });
-
+   
     console.log(desafios);
     return(
         <>
