@@ -114,13 +114,17 @@ const   FormularioDesafio = () => {
             setShow(true);
             return;
           }
-          if(desafio.desafio === novoDesafio.desafio && desafio.professor !== novoDesafio.professor){
-            console.log(novoDesafio.desafio);
+          
+          if(desafio.desafio === novoDesafio.desafio && desafio.periodo === novoDesafio.periodo){
             event.preventDefault();
             _setShow(true);
             return;
           }
-          if(desafio.sala === novoDesafio.sala && desafio.semana === novoDesafio.semana){
+          
+          if(desafio.sala === novoDesafio.sala && 
+            desafio.semana === novoDesafio.semana &&
+            desafio.horarioStart === novoDesafio.horarioStart &&
+            desafio.horarioEnd === novoDesafio.horarioEnd){
             event.preventDefault();
             setShow_(true);
             return;
@@ -128,7 +132,8 @@ const   FormularioDesafio = () => {
         }
         const updateDesafios = Array.isArray(desafios) ? [...desafios, { ...novoDesafio }] : [{ ...novoDesafio }];
         console.log(updateDesafios);
-        setPeriodos(updateDesafios);
+        //setPeriodos(updateDesafios);
+        setDesafios(updateDesafios);
         setLocalStorage(updateDesafios);
       }
       setValidated(true);
