@@ -1,7 +1,7 @@
 .tabelaContainer {
     overflow-x: auto; 
     max-width: 100%; 
-  }
+}
 
 .tabelaGeral{
     border-radius: 5px;
@@ -23,8 +23,8 @@
     margin-left: 10px;
 }
 
-.tabelaGeral thead{
-    background-color: rgb(48, 48, 48);
+.tr:hover{
+    background-color: rgb(249, 248, 248);
 }
 
 .tabelaGeral tbody tr:nth-child(even){
