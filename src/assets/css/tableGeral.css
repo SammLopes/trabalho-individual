@@ -1,43 +1,53 @@
 .tabelaContainer {
     overflow-x: auto; 
-    max-width: 100%; 
+    max-width: 50%; /* Ajuste a largura máxima conforme necessário */
+    margin: 0 auto; /* Centraliza a tabela no contêiner pai */
 }
 
-.tabelaGeral{
+.tabelaGeral {
     border-radius: 5px;
     background-color: rgb(70, 70, 70);
     color: white;
     margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
     overflow-x: auto;
-    max-width: 100%;
+    max-width: 100%; /* Define a largura máxima da tabela */
 }
 
-.tabelaGeral th, .tabelaGeral td{
+.tabelaGeral th,
+.tabelaGeral td {
     border: 2px solid rgb(75, 75, 75);
-    padding: 20px;
+    padding: 10px; /* Ajusta o espaço interno das células */
     text-align: center;
+    max-width: 150px; /* Define a largura máxima das células */
 }
 
-.tabelaGeral td > button{
-    margin-left: 10px;
+.tabelaGeral td > button {
+    max-width: 100%;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
-.tr:hover{
+.tabelaGeral td > button + button {
+    margin-left: 10px; /* Adiciona espaçamento à esquerda do segundo botão em diante */
+}
+
+.tr:hover {
     background-color: rgb(249, 248, 248);
 }
 
-.tabelaGeral tbody tr:nth-child(even){
+.tabelaGeral tbody tr:nth-child(even) {
     background-color: #2e2e2e;
 }
 
-.tabelaGeral th{
+.tabelaGeral th {
     background-color: #2e2e2e;
     color: white;
 }
 
-.info{
+.info {
     color: white;
     margin-top: 40px;
 }
-

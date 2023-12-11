@@ -115,12 +115,21 @@ const   FormularioDesafio = () => {
             return;
           }
           
-          if(desafio.desafio === novoDesafio.desafio && desafio.periodo === novoDesafio.periodo){
-            event.preventDefault();
-            _setShow(true);
-            return;
-          }
-          
+          // if(desafio.desafio === novoDesafio.desafio && desafio.periodo === novoDesafio.periodo){
+          //   event.preventDefault();
+          //   _setShow(true);
+          //   return;
+          // }
+          //Realizar testes com essas condições
+          if(desafio.desafio === novoDesafio.desafio &&
+            desafio.professor === novoDesafio.professor &&
+            desafio.periodo === novoDesafio.periodo &&
+            desafio.sala === novoDesafio.sala){
+              event.preventDefault();
+              _setShow(true);
+              return;
+            }
+
           if(desafio.sala === novoDesafio.sala && 
             desafio.semana === novoDesafio.semana &&
             desafio.horarioStart === novoDesafio.horarioStart &&
@@ -131,8 +140,6 @@ const   FormularioDesafio = () => {
           }
         }
         const updateDesafios = Array.isArray(desafios) ? [...desafios, { ...novoDesafio }] : [{ ...novoDesafio }];
-        console.log(updateDesafios);
-        //setPeriodos(updateDesafios);
         setDesafios(updateDesafios);
         setLocalStorage(updateDesafios);
       }
@@ -436,8 +443,8 @@ const   FormularioDesafio = () => {
                       <td >{desafios.horarioEnd}</td>
                       <td >{desafios.sala}</td>
                       <td>
-                        <Button  onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
-                        <Button type="button" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
+                        <Button type="button" size='sm' onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
+                        <Button type="button" variant="danger" size='sm' onClick={() => deletar(index)}>Delete</Button> 
                       </td>
                     </tr>
                   ))}

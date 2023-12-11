@@ -214,8 +214,8 @@ const FormularioCursos = () => {
                   <td >{curso.coordenador}</td>
                   <td >{curso.data}</td>
                   <td>
-                    <Button  onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
-                    <Button type="button" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
+                    <Button type="button" size="sm" onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
+                    <Button type="button" size="sm" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
                   </td>
                 </tr>
               ))}

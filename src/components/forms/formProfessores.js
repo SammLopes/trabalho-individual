@@ -219,8 +219,8 @@ const FormularioProfessores = () => {
                         <td >{professores.matricula}</td>
                         <td >{professores.telefone}</td>
                         <td>
-                          <Button  onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
-                          <Button type="button" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
+                          <Button type="button" size="sm" onClick={() => camposPreenchidos(index)}  variant="secondary">Editar</Button>
+                          <Button type="button" size="sm" variant="danger" onClick={() => deletar(index)}>Delete</Button> 
                         </td>
                       </tr>
                     ))}
