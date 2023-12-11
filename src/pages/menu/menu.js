@@ -1,12 +1,13 @@
 import Navigation from "../../components/navbar";
 import Footer from "../../components/footer";
-import Index from "../../components/menu.js";
+import Resumo from "../../components/resumo.js";
+import '../../assets/css/resumo.css';
 const Menu = () => {
     return (
         <>
-                <Navigation />
+            <Navigation />
             <div className="menu" >
-                <div>Resumo de tudo</div>
+                <Resumo/>
             </div>
             <div className="footer">
                 <Footer />
@@ -16,4 +17,4 @@ const Menu = () => {
 
 };
 
-export default Menu ;
+export default Menu;

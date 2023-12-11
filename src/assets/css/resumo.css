@@ -1,0 +1,23 @@
+.title{
+    margin-top:10px;
+    text-align: center;
+}
+
+.list{
+    color: white;
+}
+
+.cards {
+    margin: 0 auto;
+    margin-left: 50px;
+    margin-top: 70px;
+    display: flex; /* Alterado para flex para colocar os elementos lado a lado */
+}
+
+.card-periodo {
+    margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+}
+
+.card-professor {
+    margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+}

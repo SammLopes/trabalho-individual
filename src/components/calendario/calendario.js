@@ -89,7 +89,7 @@ const Calendario = () => {
                           const semanaDesafio = desafio.semana
                           const d = new Date(dia);
                           const isExitsDia = d >= dataInicio && d <= dataFim;
-                          const isExitsSemana = diasDaSemana[colIndex] == semanaDesafio;
+                          const isExitsSemana = diasDaSemana[colIndex] === semanaDesafio;
                           if (isExitsDia && isExitsSemana) {
                             return (
                               <div key={index}>
