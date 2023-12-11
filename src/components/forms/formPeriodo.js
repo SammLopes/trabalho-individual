@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 const FormularioPeriodo = () => {
   const formRef = useRef(null);
   const [show, setShow] = useState(false);
+  const [_show, _setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [cursos, setCursos] = useState([]);
   const [periodos, setPeriodos] = useState([]);
@@ -44,6 +45,37 @@ const FormularioPeriodo = () => {
             <Button variant="danger" onClick={handleClose}>
               Close
             </Button>
+            <option value="">Cursos</option>
+                  {cursos.map((cursos, index) => (
+                    <option key={index} value={cursos.nome}>
+                      {cursos.nome}
+                    </option>
+                  ))}
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+
+  const _handleClose = () => _setShow(false);
+  const AvisoDois = (text)=>{
+    return (
+      <>
+        <Modal show={_show}>
+          <Modal.Header>
+            <Modal.Title>Aviso</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{text.text}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={_handleClose}>
+              Close
+            </Button>
+            <option value="">Cursos</option>
+                  {cursos.map((cursos, index) => (
+                    <option key={index} value={cursos.nome}>
+                      {cursos.nome}
+                    </option>
+                  ))}
           </Modal.Footer>
         </Modal>
       </>
@@ -59,9 +91,18 @@ const FormularioPeriodo = () => {
       for(let periodo of periodos){
         if(periodo.numeroPeriodo === novoPeriodo.numeroPeriodo && 
           periodo.semestre === novoPeriodo.semestre &&
-          periodo.turno === novoPeriodo.turno){
+          periodo.turno === novoPeriodo.turno && 
+          periodo.cursoPeriodo === novoPeriodo.cursoPeriodo){
           event.preventDefault();
           setShow(true);
+          return;
+        }
+
+        if(periodo.numeroPeriodo === novoPeriodo.numeroPeriodo && 
+          periodo.cursoPeriodo === novoPeriodo.cursoPeriodo && 
+          periodo.semestre === novoPeriodo.semestre){
+          event.preventDefault();
+          _setShow(true);
           return;
         }
       }
@@ -314,6 +355,7 @@ const FormularioPeriodo = () => {
           )}    
         </div>
         <Aviso text = "Periodo já cadastrado"/>
+        <AvisoDois text = "Este curso ja está cadastrado em um Periodo"/>
     </>
     );
 }

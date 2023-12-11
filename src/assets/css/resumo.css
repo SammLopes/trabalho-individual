@@ -8,7 +8,8 @@
 }
 
 .cards {
-    margin: 0 auto;
+    flex: 1 1 200px;
+    /*margin: 0 auto;*/
     margin-left: 50px;
     margin-top: 70px;
     display: flex; /* Alterado para flex para colocar os elementos lado a lado */
@@ -20,4 +21,12 @@
 
 .card-professor {
     margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+}
+
+.card-sala{
+    margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+}
+
+.card-desafio{
+    margin-left:20px;
 }

@@ -38,16 +38,14 @@ const Resumo = () => {
                 <div className='card-professor'>
                     <CardProfessor professores={professores}/>
                 </div>
-                {
-                /*
+            
                 <div className='card-sala'>
                     <CardProfessor salas={salas}/>
                 </div>
                 <div className='card-desafio'>
                     <CardProfessor desafios={desafios}/>
                 </div>
-                */
-                }
+                
             </div>
         </>
     );
