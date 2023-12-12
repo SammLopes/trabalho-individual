@@ -128,10 +128,14 @@ const   FormularioDesafio = () => {
     } else {
       for(let desafio of desafios){
         if(desafio.desafio === novoDesafio.desafio &&
-          desafio.periodo === novoDesafio.periodo){
-            event.preventDefault();
-            setMostrar(true);
-            return;
+          desafio.periodo !== novoDesafio.periodo){
+            const u = desafio.periodo.substr(-1);
+            const _u = novoDesafio.periodo.substr(-1);
+            if(u === _u){
+              event.preventDefault();
+              setMostrar(true);
+              return;
+            }
           }
         if(desafio.desafio === novoDesafio.desafio && 
           desafio.professor !== novoDesafio.professor &&
