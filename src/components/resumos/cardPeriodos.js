@@ -14,7 +14,7 @@ const ResumoPeriodos = ({ periodos }) => {
                 <Card.Text>Quantidade de periodos: {size}</Card.Text>
             </Card.Body>
             <Card.Body>
-                <Button size="sm" as={Link} to="/periodo">Cadastros de periodos</Button>
+                <Button size="sm" as={Link} to="/periodo">Cadastros de Periodos</Button>
             </Card.Body>
         </Card>
 

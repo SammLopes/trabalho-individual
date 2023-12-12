@@ -85,23 +85,14 @@ const FormularioPeriodo = () => {
           setShow(true);
           return;
         }
-
-        const isCursoExist = periodos.some(periodo => {
-          return periodo.cursoPeriodo === novoPeriodo.cursoPeriodo;
-        });
-        if (isCursoExist && periodo.turno === novoPeriodo.turno) {
-          event.preventDefault();
-          _setShow(true);
-          return;
-        }
       }
-        const updatePeriodos = Array.isArray(periodos) ? [...periodos, { ...novoPeriodo }] : [{ ...novoPeriodo }];
-        console.log(updatePeriodos);
-        setPeriodos(updatePeriodos);
-        setLocalStorage(updatePeriodos);
-      }
+      const updatePeriodos = Array.isArray(periodos) ? [...periodos, { ...novoPeriodo }] : [{ ...novoPeriodo }];
+      console.log(updatePeriodos);
+      setPeriodos(updatePeriodos);
+      setLocalStorage(updatePeriodos);
+    }
       setValidated(true);
-    };
+};
 
 
   const camposPreenchidos = (index) => {
@@ -183,13 +174,16 @@ const FormularioPeriodo = () => {
             <Row className="mb-4">
             <Form.Group as={Col} md="5" controlId="validationCustom03">
                 <Form.Label>Periodo</Form.Label>
-                <Form.Control 
-                  type="text" 
-                  placeholder="Periodo" 
+                <Form.Select 
                   required  
                   value={novoPeriodo.numeroPeriodo}
                   onChange={(e) => setNovoPeriodo({...novoPeriodo, numeroPeriodo:e.target.value})}
-                />
+                >
+                  <option value="">Periodos</option>
+                  <option value="1º">1º</option>
+                  <option value="2º">2º</option>
+                  <option value="3º">3º</option>
+                </Form.Select>
                 <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Digite o periodo.

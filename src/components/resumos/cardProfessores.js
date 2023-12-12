@@ -14,7 +14,7 @@ const ResumoProfessores = ({ professores }) => {
                 <Card.Text>Quantidade de professores: {size}</Card.Text>
             </Card.Body>
             <Card.Body>
-                <Button size="sm" as={Link} to="/professores">Cadastros de professores</Button>
+                <Button size="sm" as={Link} to="/professores">Cadastros de Professores</Button>
             </Card.Body>
         </Card>
 

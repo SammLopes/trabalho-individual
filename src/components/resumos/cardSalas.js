@@ -11,10 +11,10 @@ const ResumoSalas = ({ salas }) => {
             <Card.Img variant="top"  src='/icons/favicons/android-chrome-192x192.png' className="img-fluid" style={{ maxWidth: '100%', maxHeight: '250px', marginTop:'10px' }} />
             <Card.Body>
                 <Card.Title>Salas</Card.Title>
-                <Card.Text>Quantidade de sala: {size}</Card.Text>
+                <Card.Text>Quantidade de salas: {size}</Card.Text>
             </Card.Body>
             <Card.Body>
-                <Button size="sm" as={Link} to="/salas">Cadastros de sala</Button>
+                <Button size="sm" as={Link} to="/salas">Cadastros de Salas</Button>
             </Card.Body>
         </Card>
 

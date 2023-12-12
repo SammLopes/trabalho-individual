@@ -14,7 +14,7 @@ const CardDesafios = ({ desafios }) => {
                 <Card.Text>Quantidade de desafios: {size}</Card.Text>
             </Card.Body>
             <Card.Body>
-                <Button size="sm" as={Link} to="/desafio">Cadastros de desafio</Button>
+                <Button size="sm" as={Link} to="/desafio">Cadastros de Desafios</Button>
             </Card.Body>
         </Card>
 

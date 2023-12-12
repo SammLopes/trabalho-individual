@@ -5,12 +5,14 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 import Modal from 'react-bootstrap/Modal';
+import { getValue } from '@testing-library/user-event/dist/utils';
 
 const   FormularioDesafio = () => {
   const formRef = useRef(null);
   const [show, setShow] = useState(false);
   const [_show, _setShow] = useState(false);
   const [show_, setShow_] = useState(false);
+  const [mostrar, setMostrar] = useState(false);
   const diasDaSemana = ['Domingo','Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
   const [validated, setValidated] = useState(false);
   const [desafios, setDesafios] = useState([]);
@@ -100,6 +102,24 @@ const   FormularioDesafio = () => {
     );
   }
 
+  const handle = () => setMostrar(false);
+  const AvisoQuatro = (text)=>{
+    return (
+      <>
+        <Modal show={mostrar}>
+          <Modal.Header>
+            <Modal.Title>Aviso</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{text.text}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handle}>
+              Fechar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -107,6 +127,12 @@ const   FormularioDesafio = () => {
       event.stopPropagation();
     } else {
       for(let desafio of desafios){
+        if(desafio.desafio === novoDesafio.desafio &&
+          desafio.periodo === novoDesafio.periodo){
+            event.preventDefault();
+            setMostrar(true);
+            return;
+          }
         if(desafio.desafio === novoDesafio.desafio && 
           desafio.professor !== novoDesafio.professor &&
           desafio.periodo === novoDesafio.periodo){
@@ -115,12 +141,6 @@ const   FormularioDesafio = () => {
             return;
           }
           
-          // if(desafio.desafio === novoDesafio.desafio && desafio.periodo === novoDesafio.periodo){
-          //   event.preventDefault();
-          //   _setShow(true);
-          //   return;
-          // }
-          //Realizar testes com essas condições
           if(desafio.desafio === novoDesafio.desafio &&
             desafio.professor === novoDesafio.professor &&
             desafio.periodo === novoDesafio.periodo &&
@@ -227,6 +247,11 @@ const   FormularioDesafio = () => {
     setEdit(false);
     setLocalStorage(novosDesafios);
   }
+  
+  //  desafios.map((desafio)=> {
+  //   console.log(desafio.periodo);
+  //  });
+  
     return(
       <>
         <div className='form d-flex justify-content-center'>
@@ -247,17 +272,19 @@ const   FormularioDesafio = () => {
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="7" controlId="validationCustom03">
-                <Form.Label>Período</Form.Label>
+                <Form.Label>Períodos</Form.Label>
                 <Form.Select type="text" placeholder="Período" 
                   required  
                     value={novoDesafio.periodo}
                     onChange={(e) => setNovoDesafio({...novoDesafio, periodo:e.target.value})}
                   >
-                  <option value="">Período</option>
-                  {periodos.map((periodos, index) => (
-                      <option key={index} value={periodos.numeroPeriodo}>
-                        {periodos.numeroPeriodo} | {periodos.semestre} | {periodos.cursoPeriodo} | {periodos.turno}
-                      </option>
+                  <option value="">Períodos</option>
+                  {periodos.map((periodo, index) => (
+
+                    <option key={index} value={`${periodo.numeroPeriodo}|${periodo.semestre}|${periodo.turno.charAt(0).toUpperCase()}`}>
+                        {periodo.numeroPeriodo} | {periodo.semestre} | {periodo.cursoPeriodo} | {periodo.turno}
+                    </option>
+
                     ))}
                 </Form.Select>
                 <Form.Control.Feedback>Muito bom!</Form.Control.Feedback>
@@ -457,6 +484,7 @@ const   FormularioDesafio = () => {
             <Aviso text = "ja existe um desafio associado a este professor !!"/>
             <AvisoDois text = "Desafio já cadastrado !"/>
             <AvisoTres text = "Sala já reservada"/>
+            <AvisoQuatro text = "Este curso está relacionado a outro Periodo" />
      </>
     );
 }
