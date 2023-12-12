@@ -2,9 +2,9 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom'; 
 import Button from 'react-bootstrap/Button';
 
-const ResumoDesafios = ({ desafios }) => {
+const CardDesafios = ({ desafios }) => {
 
-    const size = desafios.length;
+    const size = desafios ? desafios.length : 0;
     return (
       <div >
         <Card style={{ width: '18rem', color:'white'}}  bg="dark">
@@ -22,4 +22,4 @@ const ResumoDesafios = ({ desafios }) => {
     );
    }
 
-   export default ResumoDesafios;
+   export default CardDesafios;

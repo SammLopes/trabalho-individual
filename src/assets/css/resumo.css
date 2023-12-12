@@ -7,6 +7,21 @@
     color: white;
 }
 
+/*
+  display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    margin-bottom: 80px; 
+    min-height: 100vh;
+    position: relative;
+*/
+.resumo{
+
+}
+
 .cards {
     flex: 1 1 200px;
     /*margin: 0 auto;*/
@@ -14,19 +29,21 @@
     margin-top: 70px;
     display: flex; /* Alterado para flex para colocar os elementos lado a lado */
 }
-
 .card-periodo {
-    margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+    margin-left: 20px; 
 }
 
 .card-professor {
-    margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+    margin-left: 20px; 
 }
 
 .card-sala{
-    margin-left: 20px; /* Ajustado para manter a margem entre os elementos */
+    margin-left: 20px;
+    margin-bottom:20px; 
 }
 
 .card-desafio{
     margin-left:20px;
-}
+
+} 
+

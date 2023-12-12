@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 const ResumoSalas = ({ salas }) => {
 
-    const size = salas.length;
+    const size = salas ? salas.length : 0;
     return (
       <div >
         <Card style={{ width: '18rem', color:'white'}}  bg="dark">
@@ -14,7 +14,7 @@ const ResumoSalas = ({ salas }) => {
                 <Card.Text>Quantidade de sala: {size}</Card.Text>
             </Card.Body>
             <Card.Body>
-                <Button size="sm" as={Link} to="/sala">Cadastros de sala</Button>
+                <Button size="sm" as={Link} to="/salas">Cadastros de sala</Button>
             </Card.Body>
         </Card>
 

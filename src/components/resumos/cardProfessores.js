@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 const ResumoProfessores = ({ professores }) => {
 
-    const size = professores.length;
+    const size = professores ? professores.length  : 0 ;
     return (
       <div >
         <Card style={{ width: '18rem', color:'white'}}  bg="dark">

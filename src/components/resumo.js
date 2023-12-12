@@ -1,9 +1,14 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from 'react';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import CardCursos from './resumos/cardCurso.js'; 
 import CardPeriodos from './resumos/cardPeriodos.js';
 import CardProfessor from './resumos/cardProfessores.js';
+import CardDesafios from './resumos/cardDesafios.js';
+import CardSalas from './resumos/cardSalas.js';
+
 const Resumo = () => {
 
     const [cursos, setCursos] = useState([]);
@@ -18,9 +23,9 @@ const Resumo = () => {
         setPeriodos(getPeriodos);
         const getProfessores = JSON.parse(localStorage.getItem('professores'))|| [];
         setProfesores(getProfessores);
-        const getSalas = JSON.parse(localStorage.getItem('salas'));
+        const getSalas = JSON.parse(localStorage.getItem('salas'))||[];
         setSalas(getSalas);
-        const getDesafios = JSON.parse(localStorage.getItem('desafios'));
+        const getDesafios = JSON.parse(localStorage.getItem('desafios'))||[];
         setDesafios(getDesafios)
       }, []);
     return(
@@ -28,24 +33,26 @@ const Resumo = () => {
             <div className='title'>
                 <h1>Resumo de Cadastros</h1>
             </div>
-            <div className='cards'>
-                <div className='card-curso'>
-                    <CardCursos cursos={cursos}/>
+            <div >
+                <div className='cards'>
+                <Row>
+                    <Col>
+                        <CardCursos cursos={cursos}/>
+                    </Col>
+                    <Col>
+                        <CardPeriodos periodos={periodos}/>
+                    </Col>
+                    <Col>
+                        <CardProfessor professores={professores}/>
+                    </Col>
+                    <Col style={{  marginBottom: '20px' }}>
+                        <CardSalas salas={salas}/>
+                    </Col>
+                    <Col style={{ marginTop: '20px', marginBottom: '30px' }}>
+                        <CardDesafios desafios={desafios}/>
+                    </Col>
+                </Row>
                 </div>
-                <div className='card-periodo'>
-                    <CardPeriodos periodos={periodos}/>
-                </div>
-                <div className='card-professor'>
-                    <CardProfessor professores={professores}/>
-                </div>
-            
-                <div className='card-sala'>
-                    <CardProfessor salas={salas}/>
-                </div>
-                <div className='card-desafio'>
-                    <CardProfessor desafios={desafios}/>
-                </div>
-                
             </div>
         </>
     );
