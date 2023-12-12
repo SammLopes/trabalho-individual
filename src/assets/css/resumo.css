@@ -7,21 +7,6 @@
     color: white;
 }
 
-/*
-  display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    height: auto;
-    width: auto;
-    margin-bottom: 80px; 
-    min-height: 100vh;
-    position: relative;
-*/
-.resumo{
-
-}
-
 .cards {
     flex: 1 1 200px;
     /*margin: 0 auto;*/
