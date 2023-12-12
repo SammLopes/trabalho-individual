@@ -45,12 +45,6 @@ const FormularioPeriodo = () => {
             <Button variant="danger" onClick={handleClose}>
               Close
             </Button>
-            <option value="">Cursos</option>
-                  {cursos.map((cursos, index) => (
-                    <option key={index} value={cursos.nome}>
-                      {cursos.nome}
-                    </option>
-                  ))}
           </Modal.Footer>
         </Modal>
       </>
@@ -70,12 +64,6 @@ const FormularioPeriodo = () => {
             <Button variant="danger" onClick={_handleClose}>
               Close
             </Button>
-            <option value="">Cursos</option>
-                  {cursos.map((cursos, index) => (
-                    <option key={index} value={cursos.nome}>
-                      {cursos.nome}
-                    </option>
-                  ))}
           </Modal.Footer>
         </Modal>
       </>
@@ -98,9 +86,10 @@ const FormularioPeriodo = () => {
           return;
         }
 
-        if(periodo.numeroPeriodo === novoPeriodo.numeroPeriodo && 
-          periodo.cursoPeriodo === novoPeriodo.cursoPeriodo && 
-          periodo.semestre === novoPeriodo.semestre){
+        const isCursoExist = periodos.some(periodo => {
+          return periodo.cursoPeriodo === novoPeriodo.cursoPeriodo;
+        });
+        if (isCursoExist && periodo.turno === novoPeriodo.turno) {
           event.preventDefault();
           _setShow(true);
           return;
